@@ -1,0 +1,2 @@
+R1,10.254.0.1,cisco_ios
+SW1,10.254.0.11,cisco_ios

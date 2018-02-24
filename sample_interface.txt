@@ -1,0 +1,5 @@
+Interface                      Status         Protocol Description
+Gi0/0                          up             up       Block 12 Holland Avenue, 272012
+Gi0/1                          up             up       
+Gi0/2                          admin down     down     
+Gi0/3                          admin down     down     SHUTDOWN
