@@ -1,0 +1,5 @@
+!netaddr module
+http://netaddr.readthedocs.io/en/latest/index.html
+
+!netmiko module
+https://pynet.twb-tech.com/blog/automation/netmiko.html
