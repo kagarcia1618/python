@@ -11,10 +11,10 @@ def parse_cisco_ios_int_desc (node_int_data):
 	tmp_data = OrderedDict() #Holds the multiple description values of data_parsed prior joining/concatenating the contents and storing it to final_data
 	final_data = OrderedDict() #Contains the final parsed data values
 	
-	a = 0 #Index value for storing container of data_split to data_parsed
-	b = 0 #Index value for storing container of data_parsed to final_data
-	c = 0 #Index value for storing leaf data of data_split to data_parsed
-	d = 0 #Index value for storing leaf data of data_parsed to final_data
+	a = 0 #Integer index value for storing container of data_split to data_parsed
+	b = 0 #Integer index value for storing container of data_parsed to final_data
+	c = 0 #Integer index value for storing leaf data of data_split to data_parsed
+	d = 0 #Integer index value for storing leaf data of data_parsed to final_data
 	
 	data_raw = node_int_data.split('\n')
 	
@@ -31,21 +31,21 @@ def parse_cisco_ios_int_desc (node_int_data):
 			a += 1
 	
 	for i in range(len(data_parsed)):
-		final_data[i] = OrderedDict()
+		final_data[str(i)] = OrderedDict()
 		for j in range(len(data_parsed[d])):
 			if j < 3:
-				final_data[d][b] = data_parsed[d][j]
+				final_data[str(d)][str(b)] = data_parsed[d][j]
 				b += 1
 				if j == 2:
 					if len(data_parsed[d]) == 3:
-						final_data[d][3] = 'NO_DATA'
+						final_data[str(d)]['3'] = 'NO_DATA'
 				if j == 1:
-					if final_data[d][j] == 'admin':
-						final_data[d][j] = 'admin_down'
+					if final_data[str(d)][str(j)] == 'admin':
+						final_data[str(d)][str(j)] = 'admin_down'
 			else:
 				if data_parsed[d][j] == 'down':
 					if len(data_parsed[d]) == 4:
-						final_data[d][3] = 'NO_DATA'
+						final_data[str(d)]['3'] = 'NO_DATA'
 				else:
 					for k in range(len(data_parsed[d])-3): #Itirates the description values if more than one & stores into tmp_data
 						if data_parsed[d][1] != 'admin': #Checks if the status equals 'admin' due to extra space that will be added if this is the value
@@ -54,7 +54,7 @@ def parse_cisco_ios_int_desc (node_int_data):
 							if k != 0: #Skips the first value if Status equals 'admin'
 								tmp_data[data_parsed[d][b]] = k
 						b += 1	
-					final_data[d][3] = " ".join(tmp_data)
+					final_data[str(d)]['3'] = " ".join(tmp_data)
 					tmp_data = OrderedDict()
 					break
 		b = 0

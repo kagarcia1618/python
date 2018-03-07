@@ -7,7 +7,7 @@ import sys
 router = {"ip": "10.30.26.227", 
           "port": 22, 
           "user": "zibmkenneth", 
-"pass": "Nuh$@1bm022018"}
+"pass": "cisco123"}
 
 def main():
  	"""Main method that prints NETCONF capabilities of remote device."""

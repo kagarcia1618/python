@@ -8,14 +8,14 @@ cisco_881_odict = OrderedDict([
 	('device_type','cisco_ios'),
 	('ip','10.30.26.227'),
 	('username','zibmkenneth'),
-	('password','Nuh$@1bm022018')
+	('password','cisco123')
 ])
 
 cisco_881_dict = {
 	'device_type': 'cisco_ios',
 	'ip': '10.30.26.227',
 	'username': 'zibmkenneth',
-	'password': 'Nuh$@1bm022018'
+	'password': 'cisco123'
 }
 
 print ("***Regular Dictionary Format***")
