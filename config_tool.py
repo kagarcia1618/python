@@ -3,8 +3,8 @@
 from datetime import datetime
 from collections import OrderedDict
 from netmiko import ConnectHandler
-from pprint import pprint
-import xmltodict
+from netmiko import NetMikoAuthenticationException
+from netmiko import NetMikoTimeoutException
 
 def extract(filename):
 	fi = open(filename,'r') #Opens the file
@@ -54,15 +54,20 @@ for i in range(len(node_db)):
 			device_params[str(i)][str(j)] = node_login['0'][1]
 
 for i in range(len(device_params)):
-	net_connect = ConnectHandler(**device_params[str(i)])
-	wr_file = open(node_db[str(i)][0] + '_' + node_db[str(i)][1] + '_' + current_time +'.txt','w')
-	for j in range(len(cli_commands)):
-		output = net_connect.send_command(cli_commands[str(j)])
-		x = len(cli_commands[str(j)])
-		y = ''
-		for k in range(66-x):
-			y += '<'
-		wr_file.write('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>' + cli_commands[str(j)] + y + '\n' + output + '\n')
-		print('[' + node_db[str(i)][0] + ']' + '>>>>>>>>>>>>>>>>>>>>' + cli_commands[str(j)] + y + '\n' + output + '\n')
-		#print(cli_commands[str(j)] + '\n' + output)
-	wr_file.close()
+	try:
+		net_connect = ConnectHandler(**device_params[str(i)])
+		wr_file = open(node_db[str(i)][0] + '_' + node_db[str(i)][1] + '_' + current_time +'.txt','w')
+		for j in range(len(cli_commands)):
+			output = net_connect.send_command(cli_commands[str(j)])
+			x = len(cli_commands[str(j)])
+			y = ''
+			for k in range(66-x):
+				y += '<'
+			wr_file.write('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>' + cli_commands[str(j)] + y + '\n' + output + '\n')
+			print('[' + node_db[str(i)][0] + ']' + '>>>>>>>>>>>>>>>>>>>>' + cli_commands[str(j)] + y + '\n' + output + '\n')
+		wr_file.close()
+	except (NetMikoAuthenticationException, NetMikoTimeoutException) as z:
+		wr_file = open(node_db[str(i)][0] + '_' + node_db[str(i)][1] + '_' + current_time +'.txt','w')
+		wr_file.write(str(z))
+		print(z)
+		wr_file.close()
