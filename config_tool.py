@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 '''
 Author: Kenneth A. Garcia
-This python script will run a set of commands to a set of network devices.
+This python script can run a set of commands to a set of network devices.
 '''
 from datetime import datetime
 from collections import OrderedDict
