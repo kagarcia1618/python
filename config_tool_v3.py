@@ -25,14 +25,14 @@ def ssh_login(a, b, c, d):
     for i in range(len(a)):
         try:
             net_connect = ConnectHandler(**a[i])
-            wr_file = open( b[i][0] + '_' + b[i][1] + '_' + timestamp + '.' + d, 'w' )
+            wr_file = open( 'logs/' + b[i][0] + '_' + b[i][1] + '_' + timestamp + '.' + d, 'w' )
             for j in c:
                 output = net_connect.send_command(j)
                 wr_file.write( j + '\n' + output + '\n')
                 print('[' + b[i][0] + '] ' + j + '\n' + output + '\n')
             wr_file.close()
         except (NetMikoAuthenticationException, NetMikoTimeoutException) as z:
-            wr_file = open(b[i][0] + '_' + b[i][1] + '_' + timestamp + '.' + d, 'w' )
+            wr_file = open( 'logs/' + b[i][0] + '_' + b[i][1] + '_' + timestamp + '.' + d, 'w' )
             wr_file.write(str(z))
             print(z)
             wr_file.close()
@@ -52,8 +52,7 @@ def cisco_ios(a, b, c):
     ssh_login(params_filter,node_filter,cfg_filter,'cfg')
     ssh_login(params_filter,node_filter,log_filter,'log')
     
-    '''FOR TROUBLESHOOTING'''
-    return [params_filter, node_filter, cfg_filter, log_filter]
+    return
 
 def cisco_xe(a, b, c):
     '''
@@ -158,23 +157,21 @@ def login(a, b, c):
     c - all devices command lines
     '''
     n_type = list( set( [ i[0] for i in c ] ) )
-
     for i in n_type:
         if i == 'cisco_nxos':
-            a1 = cisco_ios(a, b, c)
+            a1 = cisco_nxos(a, b, c)
         elif i == 'cisco_xe':
-            a2 = cisco_ios(a, b, c)
+            a2 = cisco_xe(a, b, c)
         elif i == 'cisco_xr':
-            a3 = cisco_ios(a, b, c)
+            a3 = cisco_xr(a, b, c)
         elif i == 'arista_eos':
-            a4 = cisco_ios(a, b, c)
+            a4 = arista_eos(a, b, c)
         elif i == 'juniper_junos':
-            a5 = cisco_ios(a, b, c)
+            a5 = juniper_junos(a, b, c)
         elif i == 'cisco_ios':
             a6 = cisco_ios(a, b, c)
         else:
             return
-    return [a1,a2,a3,a4,a5,a6]
 
 if __name__ == '__main__':
     #temporary storage of the raw data of the nodes database

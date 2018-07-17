@@ -1,4 +1,75 @@
-show ip interface brief
-show interface description
-show ip route
-show cdp neighbors
+cisco_ios,cfg,show run
+cisco_ios,log,show interface
+cisco_ios,log,show interface summary
+cisco_ios,log,show interface status
+cisco_ios,log,show ip interface brief
+cisco_ios,log,show version
+cisco_ios,log,show inventory
+cisco_ios,log,show vlan brief
+cisco_ios,log,show switch detail
+cisco_ios,log,show mac address-table
+cisco_ios,log,show spanning-tree
+cisco_ios,log,show spanning-tree summary
+cisco_ios,log,show spanning-tree root
+cisco_ios,log,show spanning-tree detail
+cisco_ios,log,show cdp neighbor
+cisco_ios,log,show cdp neighbor detail
+cisco_xe,cfg,show run
+cisco_xe,log,show interface
+cisco_xe,log,show interface summary
+cisco_xe,log,show interface status
+cisco_xe,log,show ip interface brief
+cisco_xe,log,show version
+cisco_xe,log,show inventory
+cisco_xe,log,show vlan brief
+cisco_xe,log,show switch detail
+cisco_xe,log,show mac address-table
+cisco_xe,log,show spanning-tree
+cisco_xe,log,show spanning-tree summary
+cisco_xe,log,show spanning-tree root
+cisco_xe,log,show spanning-tree detail
+cisco_xe,log,show cdp neighbor
+cisco_xe,log,show cdp neighbor detail
+cisco_xr,cfg,show run
+cisco_xr,log,show interface
+cisco_xr,log,show interface summary
+cisco_xr,log,show interface status
+cisco_xr,log,show ip interface brief
+cisco_xr,log,show version
+cisco_xr,log,show inventory
+cisco_xr,log,show cdp neighbor
+cisco_xr,log,show cdp neighbor detail
+cisco_nxos,cfg,show run
+cisco_nxos,log,show interface
+cisco_nxos,log,show interface brief
+cisco_nxos,log,show interface status
+cisco_nxos,log,show ip interface brief
+cisco_nxos,log,show version
+cisco_nxos,log,show inventory
+cisco_nxos,log,show vlan brief
+cisco_nxos,log,show mac address-table
+cisco_nxos,log,show cdp neighbor
+cisco_nxos,log,show cdp neighbor detail
+juniper_junos,cfg,show configuration
+juniper_junos,cfg,show configuration | display set
+juniper_junos,log,show version
+juniper_junos,log,show chassis hardware
+juniper_junos,log,show ethernet-switching table
+juniper_junos,log,show vlans operational
+juniper_junos,log,show vlans
+juniper_junos,log,show chassis environment
+juniper_junos,log,show interfaces
+juniper_junos,log,show interfaces terse
+juniper_junos,log,show spanning-tree bridge
+juniper_junos,log,show spanning-tree interface
+arista_eos,cfg,show running-config
+arista_eos,log,show inventory
+arista_eos,log,show version
+arista_eos,log,show interface
+arista_eos,log,show interface vlans
+arista_eos,log,show interface status
+arista_eos,log,show interface switchport
+arista_eos,log,show ip interface brief
+arista_eos,log,show vlan
+arista_eos,log,show vlan summary
+arista_eos,log,show mac address-table
